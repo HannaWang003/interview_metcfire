@@ -124,12 +124,20 @@ const tempData = ref({
   age: '',
 });
 function handleClickOption(btn, data) {
-  // ...
+  if (btn.status === 'delete') {
+    deleteUser(data.id);
+  } else if (btn.status === 'edit') {
+    //
+  }
 }
+
+//create
 function createUser() {
   axios.post('https://dahua.metcfire.com.tw/api/CRUDTest', tempData.value);
   location.reload();
 }
+
+//get
 function getUser() {
   axios
     .get('https://dahua.metcfire.com.tw/api/CRUDTest/a', {
@@ -140,6 +148,12 @@ function getUser() {
     .then((response) => {
       blockData.value = response.data;
     });
+}
+
+//delete
+function deleteUser(id) {
+  axios.delete(`https://dahua.metcfire.com.tw/api/CRUDTest/${id}`);
+  location.reload();
 }
 getUser();
 </script>
