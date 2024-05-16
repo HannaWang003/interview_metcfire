@@ -126,15 +126,8 @@ const tempData = ref({
 function handleClickOption(btn, data) {
   // ...
 }
-async function createUser() {
-  try {
-    await axios.post(
-      'https://dahua.metcfire.com.tw/api/CRUDTest',
-      tempData.value
-    );
-  } catch (error) {
-    console.error('Failed to create user:', error);
-  }
+function createUser() {
+  axios.post('https://dahua.metcfire.com.tw/api/CRUDTest', tempData.value);
 }
 </script>
 
