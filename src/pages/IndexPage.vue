@@ -152,6 +152,7 @@ function getUser() {
 
 //delete
 function deleteUser(id) {
+  alert('是否確定刪除該筆資料?');
   axios.delete(`https://dahua.metcfire.com.tw/api/CRUDTest/${id}`);
   location.reload();
 }
