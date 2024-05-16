@@ -4,7 +4,7 @@
       <div class="q-mb-xl">
         <q-input v-model="tempData.name" label="姓名" />
         <q-input v-model="tempData.age" label="年齡" />
-        <q-btn color="primary" class="q-mt-md">新增</q-btn>
+        <q-btn color="primary" class="q-mt-md" @click="createUser">新增</q-btn>
       </div>
 
       <q-table
@@ -125,6 +125,16 @@ const tempData = ref({
 });
 function handleClickOption(btn, data) {
   // ...
+}
+async function createUser() {
+  try {
+    await axios.post(
+      'https://dahua.metcfire.com.tw/api/CRUDTest',
+      tempData.value
+    );
+  } catch (error) {
+    console.error('Failed to create user:', error);
+  }
 }
 </script>
 
