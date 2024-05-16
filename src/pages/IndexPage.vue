@@ -128,7 +128,20 @@ function handleClickOption(btn, data) {
 }
 function createUser() {
   axios.post('https://dahua.metcfire.com.tw/api/CRUDTest', tempData.value);
+  location.reload();
 }
+function getUser() {
+  axios
+    .get('https://dahua.metcfire.com.tw/api/CRUDTest/a', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => {
+      blockData.value = response.data;
+    });
+}
+getUser();
 </script>
 
 <style lang="scss" scoped>
